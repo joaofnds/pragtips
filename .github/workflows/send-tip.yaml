@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          curl -X POST -H "Content-Type: application/json" --data "{\"content\": \"$(shuf -n 1 tips.txt)\"}" "$WEBHOOK_URL"
+          curl -s -X POST -H "Content-Type: application/json" -d "{\"content\": \"$(shuf -n 1 tips.txt)\"}" "$WEBHOOK_URL"
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
